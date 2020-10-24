@@ -172,6 +172,10 @@ pub struct FilesWrite<'a> {
 
     #[cfg_attr(feature = "builder", builder(default, setter(strip_option)))]
     pub flush: Option<bool>,
+
+    #[serde(skip)]
+    #[cfg_attr(feature = "builder", builder(setter(skip), default=()))]
+    pub(crate) _phantom: (),
 }
 
 impl<'a> ApiRequest for FilesWrite<'a> {
